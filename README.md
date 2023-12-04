@@ -89,3 +89,7 @@ Penggabungan 9 (J)
 
 ### Pembagian IP
 
+### Testing
+
+https://github.com/thoriqagfi/Jarkom-Modul-4-B08-2023/assets/92865110/ff03f4d3-bfb4-41f2-af4b-9fa143d91fad
+
