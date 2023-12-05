@@ -8,18 +8,516 @@
 
 
 
-## VLSM
+## VLSM 
 ------------------------------------------------------------------------------------------------
 
-### Topologi VLSM
+### Topologi VLSM (GNS3)
 
-### Pembagian Rute CIDR
+<img width="1376" alt="Screenshot 2023-12-05 at 11 15 07" src="https://github.com/thoriqagfi/Jarkom-Modul-4-B08-2023/assets/86884506/63f79794-e890-47d1-b75f-b588713e2829">
 
-### Tree CIDR
+### Tree VLSM
+
+![1](https://github.com/thoriqagfi/Jarkom-Modul-4-B08-2023/assets/86884506/0b429488-b701-4c3d-b18e-31afcbe61fd7)
+
+link : https://www.canva.com/design/DAF1pfKjvRw/wUlrzshVWHUEDNRMNEcx_Q/edit?utm_content=DAF1pfKjvRw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+### Pembagian Rute VLSM
+
+<img width="640" alt="Screenshot 2023-12-05 at 11 22 50" src="https://github.com/thoriqagfi/Jarkom-Modul-4-B08-2023/assets/86884506/c2995821-c431-40a9-9b4d-b6aa6cd878b1">
 
 ### Pembagian IP
 
+<img width="573" alt="Screenshot 2023-12-05 at 11 23 30" src="https://github.com/thoriqagfi/Jarkom-Modul-4-B08-2023/assets/86884506/062fc973-d764-430b-a5b8-7a7641ed1670">
 
+### Konfigurasi Tiap Node : 
+
+#### A1 (Apetit Region)
+```
+auto eth0
+iface eth0 inet static
+address 192.182.24.2
+netmask 255.255.248.0
+gateway 192.182.24.1
+```
+
+#### A1 (LaubHills)
+```
+auto eth0
+iface eth0 inet static
+address 192.182.24.3
+netmask 255.255.248.0
+gateway 192.182.24.1
+```
+
+#### A2 (RorhRoad 1000 host)
+```
+auto eth0
+iface eth0 inet static
+address 192.182.4.2
+netmask 255.255.252.0
+gateway 192.182.4.1
+```
+
+#### A3 (SchwerMountains 5 host)
+```
+auto eth0
+iface eth0 inet static
+address 192.182.0.50
+netmask 255.255.255.248
+gateway 192.182.0.48
+```
+
+#### Fern (A1, A4)
+```
+auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet static
+address 192.182.0.2
+netmask 255.255.255.252
+gateway 192.182.0.1
+auto eth1
+iface eth1 inet static
+address 192.182.24.1
+netmask 255.255.248.0
+```
+
+#### Flamme (A4, A5, A6)
+```
+auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet static
+address 192.182.0.10
+netmask 255.255.255.252
+gateway 192.182.0.9
+auto eth1
+iface eth1 inet static
+address 192.182.0.1
+netmask 255.255.255.252
+auto eth2
+iface eth2 inet static
+address 192.182.0.5
+netmask 255.255.255.252
+auto eth3
+iface eth3 inet static
+address 192.182.4.1
+netmask 255.255.252.0
+```
+
+#### Himmel (A5, A3)
+```
+auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet static
+address 192.182.0.6
+netmask 255.255.255.252
+gateway 192.182.0.5
+auto eth1
+iface eth1 inet static
+address 192.182.0.49
+netmask 255.255.252.248
+```
+
+#### Aura
+```
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1 #ke denken
+iface eth1 inet static
+address 192.182.0.29
+netmask 255.255.255.252
+
+auto eth2 #Ke Frieren
+iface eth2 inet static
+address 192.182.0.13
+netmask 255.255.255.252
+
+auto eth3 #ke Eisen
+iface eth3 inet static
+address 192.182.0.21
+netmask 255.255.255.252
+```
+
+#### Stark (A17)
+```
+auto eth0 #ke Eisen
+iface eth0 inet static
+address 192.182.0.34
+netmask 255.255.255.252
+gateway 192.182.0.33
+```
+
+#### A9 (Richter Revolte)
+```
+auto eth0 #ke Eisen
+iface eth0 inet static
+address 192.182.0.58
+netmask 255.255.255.248
+gateway 192.182.0.57
+```
+
+#### Revolte
+```
+auto eth0 #ke Eisen
+iface eth0 inet static
+address 192.182.0.59
+netmask 255.255.255.248
+gateway 192.182.0.57
+```
+
+#### Frieren
+
+```
+auto lo
+iface lo inet loopback
+auto eth0 #ke aura
+iface eth0 inet static
+address 192.182.0.14
+netmask 255.255.255.252
+gateway 192.182.0.13
+auto eth1 #ke Flamme
+iface eth1 inet static
+address 192.182.0.9
+netmask 255.255.255.252
+auto eth2 #Ke Lakecorridor
+iface eth2 inet static
+address 192.182.0.129
+netmask 255.255.255.224
+```
+
+#### Eisen
+```
+auto lo
+iface lo inet loopback
+auto eth0 #ke Aura
+iface eth0 inet static
+address 192.182.0.22
+netmask 255.255.255.252
+gateway 192.182.0.21
+
+auto eth1 #ke Linie
+iface eth1 inet static
+address 192.182.0.25
+netmask 255.255.255.252
+
+auto eth2 #ke Lugner
+iface eth2 inet static
+address 192.182.0.37
+netmask 255.255.255.252
+
+auto eth3 #ke Stark
+iface eth3 inet static
+address 192.182.0.33
+netmask 255.255.255.252
+
+auto eth4 #ke Switch11
+iface eth4 inet static
+address 192.182.0.57
+netmask 255.255.255.248
+```
+
+#### Denken
+```
+auto lo
+iface lo inet loopback
+
+auto eth0 #ke aura
+iface eth0 inet static
+address 192.182.0.30
+netmask 255.255.255.252
+gateway 192.182.0.29
+
+auto eth1 #ke ke Royal dan wille
+iface eth1 inet static
+address 192.182.2.1
+netmask 255.255.255.0
+```
+
+#### Royal Capital
+```
+auto eth0 #ke Denken
+iface eth0 inet static
+address 192.182.2.2
+netmask 255.255.255.0
+gateway 192.182.2.1
+```
+
+#### Wille Region
+```
+auto eth0 #ke Denken
+iface eth0 inet static
+address 192.182.2.3
+netmask 255.255.255.0
+gateway 192.182.2.1
+```
+
+#### Linie
+```
+auto lo
+iface lo inet loopback
+auto eth0 #ke Eisen
+iface eth0 inet static
+address 192.182.0.26
+netmask 255.255.255.252
+gateway 192.182.0.25
+
+auto eth1 #ke Lawine
+iface eth1 inet static
+address 192.182.0.17
+netmask 255.255.255.252
+
+auto eth2 #keGranz
+iface eth2 inet static
+address 192.182.16.1
+netmask 255.255.254.0
+```
+
+#### Lugner
+```
+auto lo
+iface lo inet loopback
+auto eth0 #ke Eisen
+iface eth0 inet static
+address 192.182.0.38
+netmask 255.255.255.252
+gateway 192.182.0.37
+
+auto eth1 #ke TurkRegion
+iface eth1 inet static
+address 192.182.12.1
+netmask 255.255.252.0
+
+auto eth2 #keGrobe
+iface eth2 inet static
+address 192.182.3.1
+netmask 255.255.255.0
+```
+
+#### Turk Region (A20)
+```
+auto eth0 # ke lugner
+iface eth0 inet static
+address 192.182.12.2
+netmask 255.255.252.0
+gateway 192.182.12.1
+```
+
+#### Grobe Forest (A21)
+```
+auto eth0 # ke lugner
+iface eth0 inet static
+address 192.182.3.2
+netmask 255.255.255.0
+gateway 192.182.3.1
+```
+
+#### Granz (A15)
+```
+auto eth0 #ke Linie
+iface eth0 inet static
+address 192.182.16.2
+netmask 255.255.254.0
+gateway 192.182.16.1
+```
+
+#### Lawine (A12)
+```
+auto lo
+iface lo inet loopback
+auto eth0 #ke Linie
+iface eth0 inet static
+address 192.182.0.18
+netmask 255.255.255.252
+gateway 192.182.0.17
+
+auto eth1 #ke Sw7 (A10)
+iface eth1 inet static
+address 192.182.0.65
+netmask 255.255.252.192
+```
+
+#### Bredt Region (A10)
+```
+auto eth0 #ke Lawine
+iface eth0 inet static
+address 192.182.0.66
+netmask 255.255.255.192
+gateway 192.182.0.65
+```
+
+#### Heiter (A10,A11)
+```
+auto lo
+iface lo inet loopback
+auto eth0 #ke Lawine
+iface eth0 inet static
+address 192.182.0.67
+netmask 255.255.255.192
+gateway 192.182.0.65
+
+auto eth1 #ke A11
+iface eth1 inet static
+address 192.182.8.1
+netmask 255.255.252.0
+```
+
+#### SEIN
+```
+auto eth0 #ke Heiter
+iface eth0 inet static
+address 192.182.8.2
+netmask 255.255.252.0
+gateway 192.182.8.1
+```
+
+#### RIEGEL
+```
+auto eth0 #ke Heiter
+iface eth0 inet static
+address 192.182.8.3
+netmask 255.255.252.0
+gateway 192.182.8.1
+```
+
+### Routing Routers
+
+#### Fern
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+route add -net 192.182.24.0 netmask 255.255.248.0 gw 192.182.24.1
+```
+#### Flamme
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+#fern
+route add -net 192.182.24.0 netmask 255.255.248.0 gw 192.182.0.2
+route add -net 192.182.0.0 netmask 255.255.255.252 gw 192.182.0.2
+
+#Himmel
+route add -net 192.182.0.48 netmask 255.255.255.248 gw 192.182.0.6
+route add -net 192.182.0.4 netmask 255.255.255.252 gw 192.182.0.6
+
+#kiri 
+route add -net 192.182.4.0 netmask 255.255.252.0 gw 192.182.4.1
+```
+
+#### Himmel
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+route add -net 192.182.0.48 netmask 255.255.255.248 gw 192.182.0.49
+```
+
+#### Frieren
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+route add -net 192.182.24.0 netmask 255.255.248.0 gw 192.182.0.10
+route add -net 192.182.4.0 netmask 255.255.252.0 gw 192.182.0.10
+route add -net 192.182.0.48 netmask 255.255.255.248 gw 192.182.0.10
+route add -net 192.182.0.0 netmask 255.255.255.252 gw 192.182.0.10
+route add -net 192.182.0.4 netmask 255.255.255.252 gw 192.182.0.10
+route add -net 192.182.0.8 netmask 255.255.255.252 gw 192.182.0.10
+route add -net 192.182.0.128 netmask 255.255.255.224 gw 192.182.0.129
+```
+
+#### Aura
+```
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.182.0.0/16
+#denkens
+route add -net 192.182.0.28 netmask 255.255.255.252 gw 192.182.0.30
+route add -net 192.182.2.0 netmask 255.255.255.0 gw 192.182.0.30
+
+#frieren
+route add -net 192.182.0.4 netmask 255.255.255.252 gw 192.182.0.14
+route add -net 192.182.0.8 netmask 255.255.255.252 gw 192.182.0.14
+route add -net 192.182.24.0 netmask 255.255.248.0 gw 192.182.0.14
+route add -net 192.182.4.0 netmask 255.255.252.0 gw 192.182.0.14
+route add -net 192.182.0.48 netmask 255.255.255.248 gw 192.182.0.14
+route add -net 192.182.0.12 netmask 255.255.255.252 gw 192.182.0.14
+route add -net 192.182.0.128 netmask 255.255.255.224 gw 192.182.0.14
+route add -net 192.182.0.0 netmask 255.255.255.252 gw 192.182.0.14
+
+#Eisen
+#A13
+route add -net 192.182.0.20 netmask 255.255.255.252 gw 192.182.0.22
+#A29,A17
+route add -net 192.182.0.56 netmask 255.255.255.248 gw 192.182.0.22
+route add -net 192.182.0.32 netmask 255.255.255.252 gw 192.182.0.22
+#A18-21
+route add -net 192.182.0.36 netmask 255.255.255.252 gw 192.182.0.22
+route add -net 192.182.12.0 netmask 255.255.252.0 gw 192.182.0.22
+route add -net 192.182.3.0 netmask 255.255.255.0 gw 192.182.0.22
+#A14-15
+route add -net 192.182.0.24 netmask 255.255.255.252 gw 192.182.0.22
+route add -net 192.182.16.0 netmask 255.255.254.0 gw 192.182.0.22
+route add -net 192.182.0.64 netmask 255.255.255.192 gw 192.182.0.22
+route add -net 192.182.8.0 netmask 255.255.252.0 gw 192.182.0.22
+route add -net 192.182.0.16 netmask 255.255.255.252 gw 192.182.0.22
+```
+
+#### Denken
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.182.0.29
+```
+
+#### Eisen
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+#A17
+route add -net 192.182.0.32 netmask 255.255.255.252 gw 192.182.0.33
+#A9
+route add -net 192.182.0.56 netmask 255.255.255.248 gw 192.182.0.57
+#18,20,21
+route add -net 192.182.0.36 netmask 255.255.255.252 gw 192.182.0.38
+route add -net 192.182.12.0 netmask 255.255.252.0 gw 192.182.0.38
+route add -net 192.182.3.0 netmask 255.255.255.0 gw 192.182.0.38
+#14-15
+route add -net 192.182.0.24 netmask 255.255.255.252 gw 192.182.0.26
+route add -net 192.182.16.0 netmask 255.255.254.0 gw 192.182.0.26
+#10-12
+route add -net 192.182.0.64 netmask 255.255.255.192 gw 192.182.0.26
+route add -net 192.182.8.0 netmask 255.255.252.0 gw 192.182.0.26
+route add -net 192.182.0.16 netmask 255.255.255.252 gw 192.182.0.26
+```
+
+#### Lugner
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+route add -net 192.182.12.0 netmask 255.255.252.0 gw 192.182.12.1
+route add -net 192.182.3.0 netmask 255.255.255.0 gw 192.182.3.1
+```
+
+#### Linie
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+#10-12
+route add -net 192.182.0.64 netmask 255.255.255.192 gw 192.182.0.18
+route add -net 192.182.8.0 netmask 255.255.252.0 gw 192.182.0.18
+route add -net 192.182.0.16 netmask 255.255.255.252 gw 192.182.0.18
+#A15 granz
+route add -net 192.182.16.0 netmask 255.255.254.0 gw 192.182.16.1
+```
+
+#### Lawine
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+route add -net 192.182.0.64 netmask 255.255.255.192 gw 192.182.0.65
+route add -net 192.182.8.0 netmask 255.255.252.0 gw 192.182.0.67
+```
+
+#### Heiter
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
+route add -net 192.182.8.0 netmask 255.255.252.0 gw 192.182.8.1
+```
 
 ## CIDR
 ------------------------------------------------------------------------------------------------
